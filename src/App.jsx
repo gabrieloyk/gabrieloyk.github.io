@@ -47,7 +47,6 @@ const App = () => {
             defaultSelectedKeys={["/"]}
             style={{
               flex: 1,
-              minWidth: 550,
             }}
           >
             {navItems.map((item) => (
