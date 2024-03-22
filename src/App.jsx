@@ -47,6 +47,7 @@ const App = () => {
             defaultSelectedKeys={["/"]}
             style={{
               flex: 1,
+              minWidth: 15
             }}
           >
             {navItems.map((item) => (
@@ -63,7 +64,7 @@ const App = () => {
             ))}
           </Menu>
         </Header>
-        <Content style={{ padding: "20px" }}>
+        <Content >
           <div
             style={{
               background: colorBgContainer,
