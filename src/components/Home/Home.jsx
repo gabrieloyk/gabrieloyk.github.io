@@ -16,7 +16,7 @@ const Home = () => {
     "My name is Gabriel Ong",
     "I am a software engineer",
     "I enjoy running, swimming and cycling",
-    "I hope you have a great day!",
+    "Have a great day ahead!",
   ];
 
   const [activeParagraph, setActiveParagraph] = useState(0);
