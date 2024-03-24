@@ -4,13 +4,14 @@ import { Layout, Menu, theme } from "antd";
 import Home from "./components/Home/Home";
 import { GithubOutlined, LinkedinOutlined } from "@ant-design/icons";
 import InProgress from "./components/InProgress/InProgress";
+import AthleteStats from "./components/Athlete/Athlete";
 
 const { Header, Content, Footer } = Layout;
 
 const navItems = [
   { key: "/", label: "Home" },
   { key: "/resume", label: "Resume" },
-  { key: "/projects", label: "Projects" },
+  { key: "/athlete", label: "About Me" },
   {
     key: "/github",
     label: "GitHub",
@@ -77,7 +78,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/resume" element={<Resume />} />
-              <Route path="/projects" element={<Projects />} />
+              <Route path="/athlete" element={<AthleteStats/>} />
             </Routes>
           </div>
         </Content>

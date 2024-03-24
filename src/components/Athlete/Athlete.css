@@ -1,0 +1,97 @@
+@keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%; /* Expand width to 100% */
+    }
+  }
+  
+  .typing-animation {
+    animation: typing 3s steps(70, end); /* Adjust duration and steps as needed */
+  }
+
+  .fade-in{
+    opacity: 0;
+    animation: fadeInAnimation 1s ease-in-out forwards; /* Fade-in animation */
+  }
+
+  .fly-in-from-left {
+    animation: flyInFromLeft 0.5s ease-in-out forwards
+  }
+  
+  @keyframes fadeInAnimation {
+    from {
+      opacity: 0; /* Start with opacity 0 */
+    }
+    to {
+      opacity: 1; /* Fade in by changing opacity to 1 */
+    }
+  }
+  .responsive-card {
+    /* Card-like appearance */
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 20px;
+    margin: top 20px;
+    margin-bottom: 20px;
+  
+    /* Responsive styling */
+    width: 80%; /* Ensures the card takes full width */
+    max-width: 400px; /* Limits the maximum width of the card */
+    box-sizing: border-box; /* Ensures padding and border are included in width calculation */
+    margin-left: auto; /* Centers the card horizontally */
+    margin-right: auto;
+  }
+
+  /* Define fly-in animation */
+@keyframes flyInFromLeft {
+    from {
+      transform: translateX(150%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* Add this CSS to your existing stylesheet */
+@media (max-width: 768px) {
+    .chart {
+      width: 100%; /* Adjust width for smaller screens */
+      overflow-x: auto; /* Allow horizontal scrolling if needed */
+      overflow-y: auto;
+    }
+  
+    .chart .container-strava {
+      width: 100%; /* Adjust width for smaller screens */
+      overflow-x: auto; /* Allow horizontal scrolling if needed */
+    }
+    .responsive-card {
+        max-width: 90%; /* Adjust maximum width for smaller screens */
+      }
+  }
+  
+  @media (max-width: 480px) {
+    .paragraph {
+        white-space: normal;
+    }
+    .typing-animation {
+        animation: none; 
+      }
+    .chart .container-strava .container{
+      width: 100%; /* Adjust width for even smaller screens */
+      overflow-x: auto; /* Allow horizontal scrolling if needed */
+    }
+  
+    .chart iframe {
+      width: 100%; /* Adjust width of the iframe for smaller screens */
+    }
+    .hide-annotations .ant-plot-annotation {
+        display: none; /* Hide annotations */
+      }
+  }
+  
+
+  

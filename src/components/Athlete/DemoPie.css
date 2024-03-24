@@ -1,0 +1,25 @@
+/* Add this CSS to your existing stylesheet */
+@media (max-width: 768px) {
+    .chart {
+      width: 100%; /* Adjust width for smaller screens */
+      overflow-x: auto; /* Allow horizontal scrolling if needed */
+    }
+  
+    .chart .container-strava {
+      width: 100%; /* Adjust width for smaller screens */
+      overflow-x: auto; /* Allow horizontal scrolling if needed */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .chart .container-strava {
+      width: 100%; /* Adjust width for even smaller screens */
+      overflow-x: auto; /* Allow horizontal scrolling if needed */
+    }
+  
+    .chart iframe {
+      width: 100%; /* Adjust width of the iframe for smaller screens */
+    }
+  }
+  
+  

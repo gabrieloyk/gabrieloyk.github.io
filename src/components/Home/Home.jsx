@@ -16,7 +16,7 @@ const Home = () => {
     "My name is Gabriel Ong",
     "I am a software engineer",
     "I enjoy running, swimming and cycling",
-    "Have a great day ahead!",
+    "I hope you have a great day!",
   ];
 
   const [activeParagraph, setActiveParagraph] = useState(0);
@@ -32,7 +32,7 @@ const Home = () => {
         clearInterval(typingInterval);
         // Move to the next paragraph after a delay
         setTimeout(() => {
-          setActiveParagraph((prev) => (prev + 1) % 3);
+          setActiveParagraph((prev) => (prev + 1) % words.length);
           setTypedChars(0); // Reset typedChars when moving to the next paragraph
         }, 1000);
       }
