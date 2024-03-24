@@ -11,7 +11,6 @@ const AthleteStats = () => {
   //   const [stats, setStats] = useState(null);
   const athleteId = "109793827";
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
-  console.log(isMobile)
   const [accessToken, setAccessToken] = useState(
     "607f0a099a3000c775f62dbacd610e5aa6dd10c8"
   );
@@ -86,7 +85,7 @@ const AthleteStats = () => {
   return (
     <>
       {!animationComplete || !stats ? (
-        <div className={`container-strava`} style={{ height: "80vh"}}>
+        <div className="container centering">
           <h3 className="heading fade-in">
             I'm a hobby triathlete, and joined the sport in Sept 2023. <br />{" "}
             Here's a glimpse of how much I've trained so far...

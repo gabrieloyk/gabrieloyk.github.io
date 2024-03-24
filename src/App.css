@@ -38,6 +38,9 @@
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+.centering {
+  height: 80vh;
+}
 
 .container {
   display: flex;

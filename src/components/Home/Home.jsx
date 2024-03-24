@@ -42,7 +42,7 @@ const Home = () => {
   }, [activeParagraph]);
 
   return (
-    <div className="container">
+    <div className="container centering">
       <h1 className="heading">Happy {daysOfWeek[new Date().getDay()]}</h1>
       <p className="paragraph">
         {words[activeParagraph].slice(0, typedChars)}
