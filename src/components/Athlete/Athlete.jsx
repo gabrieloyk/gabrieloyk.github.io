@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import stats from "./stats.json";
+// import stats from "./stats.json";
 import axios from "axios";
 import "../../App.css";
 import "./Athlete.css";
@@ -8,7 +8,7 @@ import { useMediaQuery } from 'react-responsive';
 import InProgress from "../InProgress/InProgress";
 
 const AthleteStats = () => {
-  //   const [stats, setStats] = useState(null);
+  const [stats, setStats] = useState(null);
   const athleteId = "109793827";
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const [accessToken, setAccessToken] = useState(
@@ -19,60 +19,64 @@ const AthleteStats = () => {
   );
   const clientId = "123614";
   const clientSecret = "a1ef81a6b8404d8845f14a142d85cb279c8491e3";
-
-  // Temporarily removed to prevent API calls
-  //   useEffect(() => {
-  //     const fetchAthleteStats = async () => {
-  //       try {
-  //         // Check if access token is still valid
-  //         const currentTime = Math.floor(Date.now() / 1000);
-  //         if (accessToken && stats && stats.expires_at && currentTime < stats.expires_at) {
-  //           return; // Access token is still valid, no need to refresh
-  //         }
-
-  //         // Access token expired or not available, refresh it
-  //         const response = await axios.post('https://www.strava.com/api/v3/oauth/token', {
-  //           client_id: clientId,
-  //           client_secret: clientSecret,
-  //           grant_type: 'refresh_token',
-  //           refresh_token: refreshToken
-  //         });
-
-  //         const { access_token, expires_at } = response.data;
-
-  //         setAccessToken(access_token);
-  //         setRefreshToken(response.data.refresh_token);
-  //         // Update access token and expiration time
-  //         setStats(prevStats => ({
-  //           ...prevStats,
-  //           access_token,
-  //           expires_at
-  //         }));
-
-  //         // Fetch athlete stats using the new access token
-  //         const athleteStatsResponse = await axios.get(`https://www.strava.com/api/v3/athletes/${athleteId}/stats`, {
-  //           headers: {
-  //             Authorization: `Bearer ${access_token}`
-  //           }
-  //         });
-  //         setStats(athleteStatsResponse.data);
-  //       } catch (error) {
-  //         console.error('Error fetching athlete stats:', error);
-  //       }
-  //     };
-
-  //     fetchAthleteStats();
-  //   }, []);
-  //   console.log(stats)
-
+  const [totalDays, setTotalDays] = useState(0)
+  const [totalHours, setTotalHours] = useState(0)
   const [animationComplete, setAnimationComplete] = useState(false);
-  const totalHours = Math.round(
-    (stats.all_swim_totals.elapsed_time +
-      stats.all_ride_totals.elapsed_time +
-      stats.all_run_totals.elapsed_time) /
-      (60 * 60)
-  );
-  const totalDays = Math.round(totalHours / 24);
+
+ useEffect(() => {
+  const fetchAccessToken = async () => {
+    try {
+      const response = await axios.post('https://www.strava.com/oauth/token', {
+        client_id: clientId,
+        client_secret: clientSecret,
+        grant_type: 'refresh_token',
+        refresh_token: refreshToken
+      });
+
+      const { access_token, expires_at, refresh_token } = response.data;
+
+      setAccessToken(access_token);
+      setRefreshToken(refresh_token);
+    } catch (error) {
+      console.error('Error fetching access token:', error);
+    }
+  };
+
+
+  fetchAccessToken();
+}, []);
+
+useEffect(() => {
+  const fetchAthleteStats = async () => {
+    try {
+      const currentTime = Math.floor(Date.now() / 1000);
+      if (accessToken && stats && stats.expires_at && currentTime < stats.expires_at) {
+        return; // Access token is still valid, no need to refresh
+      }
+
+      const athleteStatsResponse = await axios.get(`https://www.strava.com/api/v3/athletes/${athleteId}/stats`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      });
+
+      setStats(athleteStatsResponse.data);
+      let totalHours = Math.round(
+        (athleteStatsResponse.data.all_swim_totals.elapsed_time +
+          athleteStatsResponse.data.all_ride_totals.elapsed_time +
+          athleteStatsResponse.data.all_run_totals.elapsed_time) /
+          (60 * 60)
+      )
+      setTotalHours(totalHours);
+      setTotalDays(Math.round(totalHours / 24));
+    } catch (error) {
+      console.error('Error fetching athlete stats:', error);
+    }
+  };
+
+  fetchAthleteStats();
+}, [accessToken]);
+
   useEffect(() => {
     // After 4 seconds, set the animationComplete state to true
     const timer = setTimeout(() => {

@@ -36,6 +36,11 @@
     transform: rotate(360deg);
   }
 }
+.content-wrapper {
+  position: relative;
+  z-index: 1; /* Ensure content stays above the background image */
+}
+
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 .centering {

@@ -17,3 +17,15 @@
     opacity: 0;
   }
 }
+.floating-image {
+  animation: floatAnimation 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}

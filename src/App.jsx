@@ -67,6 +67,7 @@ const App = () => {
         </Header>
         <Content >
           <div
+          className="content-wrapper"
             style={{
               background: colorBgContainer,
               minHeight: "85vh",
@@ -83,7 +84,7 @@ const App = () => {
           </div>
         </Content>
         {/* <Footer style={{ textAlign: "center" }}>
-          It's {new Date().getDay()} version of Gabriel's Personal Website
+          Email: goyk98@gmail.com
         </Footer> */}
       </Layout>
     </Router>

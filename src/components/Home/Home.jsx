@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
 import "../../App.css";
+import kirbyFloating from "../../assets/kirby_floating-modified.png";
 
 const Home = () => {
   const daysOfWeek = [
@@ -42,12 +43,15 @@ const Home = () => {
   }, [activeParagraph]);
 
   return (
-    <div className="container centering">
-      <h1 className="heading">Happy {daysOfWeek[new Date().getDay()]}</h1>
-      <p className="paragraph">
-        {words[activeParagraph].slice(0, typedChars)}
-      </p>
-    </div>
+    <>
+      <div className="container centering">
+        <img src={kirbyFloating}  className="floating-image" style={{ height: 200, border: "2px solid black",  borderRadius: "50%"}} />
+        <h1 className="heading">Happy {daysOfWeek[new Date().getDay()]}</h1>
+        <p className="paragraph">
+          {words[activeParagraph].slice(0, typedChars)}
+        </p>
+      </div>
+    </>
   );
 };
 
