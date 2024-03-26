@@ -16,7 +16,7 @@ const Home = () => {
   const words = [
     "My name is Gabriel Ong",
     "I am a software engineer",
-    "I enjoy running, swimming and cycling",
+    "I like to swim, cycle and run",
     "I hope you have a great day!",
   ];
 
